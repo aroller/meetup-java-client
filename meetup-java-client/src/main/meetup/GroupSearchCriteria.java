@@ -71,6 +71,11 @@ public class GroupSearchCriteria
 		return country;
 	}
 
+	/**
+	 * 
+	 * @param country two letter country code
+	 * 
+	 */
 	public void setCountry(String country)
 	{
 		this.country = country;
