@@ -14,9 +14,7 @@ public class XStreamFactory
 	public static XStream createXStream(Class clazz) 
 	{
 		
-		XStream xstream;
-		
-		xstream = new XStream(new DomDriver());
+	    XStream xstream = new XStream(new DomDriver());
 		
  		xstream.registerConverter(new CalendarConverter(), XStream.PRIORITY_VERY_HIGH);
  		xstream.registerConverter(new IntConverter(), XStream.PRIORITY_VERY_HIGH);
