@@ -1,6 +1,7 @@
 
 package meetup;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class EventSearchCriteria
@@ -186,6 +187,17 @@ public class EventSearchCriteria
 		return after;
 	}
 
+	public void setAfter(int month, int day, int year)
+	{
+		Calendar c = Calendar.getInstance();
+		
+		c.set(Calendar.MONTH, month);
+		c.set(Calendar.DAY_OF_MONTH, day);
+		c.set(Calendar.YEAR, year);
+		
+		setAfter(c);
+	}
+	
 	public void setAfter(Calendar after)
 	{
 		this.after = after;
@@ -196,6 +208,17 @@ public class EventSearchCriteria
 		return before;
 	}
 
+	public void setBefore(int month, int day, int year)
+	{
+		Calendar c = Calendar.getInstance();
+		
+		c.set(Calendar.MONTH, month);
+		c.set(Calendar.DAY_OF_MONTH, day);
+		c.set(Calendar.YEAR, year);
+		
+		setBefore(c);
+	}
+	
 	public void setBefore(Calendar before)
 	{
 		this.before = before;
@@ -275,15 +298,22 @@ public class EventSearchCriteria
 		
 		if (this.getAfter() != null)
 		{
-			// m.put("after", getAfter());
+			m.put("after", getMonthDayYear(getAfter()));
 		}
 		
 		if (this.getBefore() != null)
 		{
-			//m.put("before", getBefore());
+			m.put("before", getMonthDayYear(getBefore()));
 		}
 		
 		return m;
 	}
 
+	static String getMonthDayYear(java.util.Calendar c)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("MMddyyyy");
+		String s = format.format(c.getTime());
+		return s;
+		
+	}
 }
