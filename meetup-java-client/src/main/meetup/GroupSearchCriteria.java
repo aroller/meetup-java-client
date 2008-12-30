@@ -113,6 +113,10 @@ public class GroupSearchCriteria
 
 	public List<String> getIds()
 	{
+		if (ids == null)
+		{
+			ids = new ArrayList<String>();
+		}
 		return ids;
 	}
 

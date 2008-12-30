@@ -105,9 +105,9 @@ public class Group
 	}
 
 
-	public void setOrganizerProfileUrl(String organizerProfileUrl)
+	public void setOrganizerProfileUrl(String url)
 	{
-		this.organizerProfileUrl = organizerProfileUrl;
+		this.organizerProfileUrl = url;
 	}
 
 

@@ -312,14 +312,10 @@ public class Client
 	 * @return todo
 	 * 
 	 */
-	public List<Group> getGroups()
+	public List<Group> getGroups(GroupSearchCriteria criteria)
 	{
 		
-		Map<String, String> params = new HashMap<String, String>();
-		
-		params.put("zip", "97209");
-		params.put("order", "ctime");
-		params.put("desc", "true");
+		Map<String, String> params = criteria.getParameterMap();
 		
 		Response r = sendApiRequest(params, "groups.xml", false);
 		

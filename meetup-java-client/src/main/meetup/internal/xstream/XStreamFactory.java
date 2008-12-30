@@ -36,6 +36,7 @@ public class XStreamFactory
  			xstream.alias("item", Group.class);
  			xstream.aliasField("lat", Group.class, "latitude");
  			xstream.aliasField("lon", Group.class, "longitude");
+ 			xstream.aliasField("organizerProfileURL", Group.class, "organizerProfileUrl");
  		}
  		else if (clazz == Topic.class)
  		{
