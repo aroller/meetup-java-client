@@ -57,5 +57,28 @@ public class EventTest extends AbstractClientTest
 		assertTrue(events.size() > 0);
 		
 	}
-	
+
+	public void testBeforeAndAfter() throws Exception
+	{
+		EventSearchCriteria crit = new EventSearchCriteria();
+		
+		crit.setCity("Chicago");
+		crit.setState("IL");
+		crit.setCountry("US");
+		
+		Calendar after = Calendar.getInstance();
+		after.add(Calendar.DAY_OF_YEAR, 1);
+		
+		Calendar before = Calendar.getInstance();
+		before.add(Calendar.DAY_OF_YEAR, 5);
+
+		crit.setBefore(before);
+		crit.setAfter(after);
+		
+		List<Event> events = c.getEvents(crit);
+		
+		assertNotNull(events);
+		
+		assertTrue(events.size() > 0);
+	}
 }
