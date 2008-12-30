@@ -21,4 +21,20 @@ public class GroupTest extends AbstractClientTest
 		
 	}
 	
+	public void testGetGroupsByCity() throws Exception
+	{
+		GroupSearchCriteria crit = new GroupSearchCriteria();
+		
+		crit.setCity("Boston");
+		crit.setState("MA");
+		crit.setCountry("US");
+		
+		List<Group> groups = c.getGroups(crit);
+		
+		assertNotNull(groups);
+		
+		assertTrue(groups.size() > 0);
+		
+	}
+	
 }
