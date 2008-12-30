@@ -1,7 +1,6 @@
 
 package meetup.test;
 
-import junit.framework.TestCase;
 import meetup.*;
 import java.util.*;
 
