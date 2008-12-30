@@ -589,4 +589,16 @@ public class Client
 		}
 	}
 
+	public List<Topic> getTopics(TopicSearchCriteria criteria)
+	{
+		
+		Map<String, String> params = criteria.getParameterMap();
+		
+		Response r = sendApiRequest(params, "topics.xml", false);
+		
+		List<Topic> topics = r.getTopics();
+		
+		return topics;
+	}
+
 }
