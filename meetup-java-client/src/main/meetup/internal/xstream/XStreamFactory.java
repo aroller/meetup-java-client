@@ -19,6 +19,7 @@ public class XStreamFactory
 		xstream = new XStream(new DomDriver());
 		
  		xstream.registerConverter(new CalendarConverter(), XStream.PRIORITY_VERY_HIGH);
+ 		xstream.registerConverter(new IntConverter(), XStream.PRIORITY_VERY_HIGH);
  		
 
 		xstream.alias("results", Response.class);
@@ -37,6 +38,8 @@ public class XStreamFactory
  			xstream.aliasField("lat", Group.class, "latitude");
  			xstream.aliasField("lon", Group.class, "longitude");
  			xstream.aliasField("organizerProfileURL", Group.class, "organizerProfileUrl");
+ 			xstream.aliasField("photo_url", Group.class, "photoUrl");
+ 			xstream.aliasField("daysleft", Group.class, "daysLeft");
  		}
  		else if (clazz == Topic.class)
  		{
