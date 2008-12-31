@@ -18,6 +18,8 @@ import org.apache.http.util.EntityUtils;
 import com.thoughtworks.xstream.XStream;
 
 import meetup.internal.xstream.XStreamFactory;
+import meetup.internal.httpclient.*;
+
 import net.oauth.OAuthAccessor;
 import net.oauth.OAuthConsumer;
 import net.oauth.OAuthMessage;
@@ -599,5 +601,32 @@ public class Client
 		
 		return topics;
 	}
+
+	protected HttpClient getHttpClient()
+	{
+		
+		if (this.httpClient instanceof DefaultHttpClient)
+		{
+			DefaultHttpClient defaultClient = (DefaultHttpClient) httpClient;
+			
+			defaultClient.removeRequestInterceptorByClass(GzipRequestInterceptor.class);
+			defaultClient.removeResponseInterceptorByClass(GzipResponseInterceptor.class);
+			
+			if (this.isCompressionEnabled())
+			{
+				defaultClient.addRequestInterceptor(GzipRequestInterceptor.getInstance());
+				defaultClient.addResponseInterceptor(GzipResponseInterceptor.getInstance());
+			}
+			
+		}
+
+		return this.httpClient;
+	}
+
+	public boolean isCompressionEnabled()
+	{
+		return compressionEnabled;
+	}
+
 
 }
