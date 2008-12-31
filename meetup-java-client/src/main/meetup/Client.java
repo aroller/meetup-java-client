@@ -187,7 +187,7 @@ public class Client
 			
 			try
 			{
-				response = this.httpClient.execute(get);
+				response = this.getHttpClient().execute(get);
 				int statusCode = response.getStatusLine().getStatusCode();
 				if (statusCode != 200)
 				{
@@ -468,7 +468,7 @@ public class Client
 		try
 		{
 			get = new HttpGet(url);
-			response = httpClient.execute(get);
+			response = this.getHttpClient().execute(get);
 			HttpEntity entity = response.getEntity();
 			data = EntityUtils.toByteArray(entity);
 		}
