@@ -6,7 +6,6 @@ public class ClientSettings implements java.io.Serializable
 {
 	private Token consumerToken;
 	private Token userSpecificAccessToken;
-	private Format format = Format.XML;
 	private String oAuthCallbackUrl;
 	private String meetupKey;
 	
@@ -34,21 +33,7 @@ public class ClientSettings implements java.io.Serializable
 		return userSpecificAccessToken;
 	}
 
-	public void setUserSpecificToken(Token t)
-	{
-		this.userSpecificAccessToken = t;
-	}
 
-	
-	public void setFormat(Format f)
-	{
-		this.format = f;
-	}
-	
-	public Format getFormat()
-	{
-		return format;
-	}
 	
 	public void setOAuthCallbackUrl(String url)
 	{
@@ -78,7 +63,7 @@ public class ClientSettings implements java.io.Serializable
 
 	public String toString()
 	{
-		return "todo";
+		return ToStringBuilder.build(this);
 	}
 
 }

@@ -316,4 +316,10 @@ public class EventSearchCriteria
 		return s;
 		
 	}
+
+
+	public String toString()
+	{
+		return ToStringBuilder.build(this);
+	}
 }

@@ -63,4 +63,8 @@ public class TopicSearchCriteria
 		return m;
 	}
 	
+	public String toString()
+	{
+		return ToStringBuilder.build(this);
+	}
 }

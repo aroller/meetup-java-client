@@ -13,7 +13,6 @@ import java.util.*;
 public class Response
 {
 	private transient String rsp;
-	private transient Format format;
 	
 	private List<Group> groups;
 	private List<Event> events;
@@ -39,21 +38,6 @@ public class Response
 	{
 		this.rsp = rsp;
 	}
-
-
-
-	public Format getFormat()
-	{
-		return format;
-	}
-
-
-
-	public void setFormat(Format format)
-	{
-		this.format = format;
-	}
-
 
 
 	public List<Group> getGroups()
@@ -241,7 +225,12 @@ public class Response
 			this.next = next;
 		}
 		
+		public String toString()
+		{
+			return ToStringBuilder.build(this);
+		}
+
 		
-	}
+	} // end Header class
 	
-}
+} // end Response class

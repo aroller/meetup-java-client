@@ -247,4 +247,8 @@ public class GroupSearchCriteria
 	}
 
 
+	public String toString()
+	{
+		return ToStringBuilder.build(this);
+	}
 }

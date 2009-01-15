@@ -1,6 +1,7 @@
 
 package meetup;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -135,7 +136,7 @@ public class Client
 		
 		params.put("key", this.getClientSettings().getMeetupKey());
 		
-	//	params.put("format", this.getClientSettings().getFormat().getType());
+		params.put("format", "xml");
 		
 		
 		String url = baseUrl;
@@ -152,20 +153,16 @@ public class Client
 			try
 			{
 				
-				OAuthClient client = null;
-				
 				Token token = this.getClientSettings().getUserSpecificAccessToken();
 				
-				client = getOAuthClient();
-				
-				OAuthMessage responseMsg = null;
+				OAuthClient client = getOAuthClient();
 				
 				OAuthAccessor access = this.createOAuthAccessor();
 				
 				access.accessToken = token.getPublicToken();
 				access.tokenSecret = token.getSecret();
 				
-				responseMsg = client.invoke(access, method, url, params.entrySet());
+				OAuthMessage responseMsg = client.invoke(access, method, url, params.entrySet());
 				
 				return responseMsg.readBodyAsString();
 				
@@ -189,7 +186,7 @@ public class Client
 			{
 				response = this.getHttpClient().execute(get);
 				int statusCode = response.getStatusLine().getStatusCode();
-				if (statusCode != 200)
+				if (statusCode != HttpStatus.SC_OK)
 				{
 					throw new RuntimeException("unexpected HTTP response, status code = " + statusCode);
 				}
@@ -207,6 +204,17 @@ public class Client
 			{
 				throw new RuntimeException(e);
 			} 
+			finally
+			{
+					try
+					{
+						entity.consumeContent();
+					} 
+					catch (IOException ignored)
+					{
+						// ignore
+					}
+			}
 			
 		}
 		
@@ -464,30 +472,35 @@ public class Client
 		HttpGet get = null;
 		HttpResponse response = null;
 		byte[] data = null;
+		HttpEntity entity = null;
 		
 		try
 		{
 			get = new HttpGet(url);
 			response = this.getHttpClient().execute(get);
-			HttpEntity entity = response.getEntity();
-			data = EntityUtils.toByteArray(entity);
+			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+			{
+				entity = response.getEntity();
+				data = EntityUtils.toByteArray(entity);
+				return data;
+			}
+			else
+			{
+				throw new RuntimeException("HTTP GET failed ("
+								+ url
+								+ "), status code = " 
+								+ response.getStatusLine().getStatusCode());
+			}
+		}
+		catch (RuntimeException ex)
+		{
+			throw ex;
 		}
 		catch (Exception ex)
 		{
 			throw new RuntimeException(ex);
 		}
 		
-		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
-		{
-			return data;
-		}
-		else
-		{
-			throw new RuntimeException("HTTP GET failed ("
-							+ url
-							+ "), status code = " 
-							+ response.getStatusLine().getStatusCode());
-		}
 		
 	}
 

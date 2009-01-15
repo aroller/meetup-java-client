@@ -14,6 +14,8 @@ public class XStreamFactory
 	public static XStream createXStream(Class clazz) 
 	{
 		
+		// todo (?) use XppDriver instead of DomDriver
+		
 	    XStream xstream = new XStream(new DomDriver());
 		
  		xstream.registerConverter(new CalendarConverter(), XStream.PRIORITY_VERY_HIGH);

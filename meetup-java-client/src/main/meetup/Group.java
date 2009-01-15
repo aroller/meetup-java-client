@@ -221,6 +221,6 @@ public class Group
 
 	public String toString()
 	{
-		return this.name;
+		return ToStringBuilder.build(this);
 	}
 }

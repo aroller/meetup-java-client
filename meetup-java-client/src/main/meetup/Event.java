@@ -189,7 +189,7 @@ public class Event
 
 	public String toString()
 	{
-		return this.name;
+		return ToStringBuilder.build(this);
 	}
 	
 }
