@@ -13,10 +13,31 @@ public abstract class AbstractClientTest extends TestCase
 	{
 		
 		ClientSettings settings = new ClientSettings();
-		settings.setMeetupKey("api-key");
+		settings.setMeetupKey("116528185c6768552f13a6171217fb");
+		
+		// todo (?) Token userToken = new Token("", "");
+		// settings.setUserSpecificAccessToken(userToken);
 		
 		c = new Client();
 		c.setClientSettings(settings);
+		
+	}
+	
+	public void assertEvents(List<Event> events)
+	{
+		assertNotNull(events);
+		
+		assertTrue(events.size() > 0);
+		
+		for (Event e : events)
+		{
+			assertTrue(e);
+		}
+	}
+	
+	public void assertTrue(Event e)
+	{
+		assertNotNull(e);
 		
 	}
 
