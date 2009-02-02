@@ -43,8 +43,8 @@ public class Client
 	
 	static private final String MEETUP_ENDPOINT_URL = "http://api.meetup.com";
 	static private final String OAUTH_REQUEST_TOKEN_URL = "http://www.meetup.com/oauth/request/";
-	static private final String OAUTH_AUTHORIZE_URL = "http://www.meetup.com/authorize";
-	static private final String OAUTH_ACCESS_TOKEN_URL = "http://www.meetup.com/oauth/access";
+	static private final String OAUTH_AUTHORIZE_URL = "http://www.meetup.com/authorize/";
+	static private final String OAUTH_ACCESS_TOKEN_URL = "http://www.meetup.com/oauth/access/";
 	
 	private HttpClient httpClient;
 	private OAuthClient authClient;
