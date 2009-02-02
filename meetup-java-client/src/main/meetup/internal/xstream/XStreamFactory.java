@@ -14,7 +14,7 @@ public class XStreamFactory
 	public static XStream createXStream(Class clazz) 
 	{
 		
-		// todo (?) use XppDriver instead of DomDriver
+		// todo (future) : use XppDriver instead of DomDriver
 		
 	    XStream xstream = new XStream(new DomDriver());
 		
@@ -65,6 +65,7 @@ public class XStreamFactory
  			xstream.aliasField("event_url", Event.class, "eventUrl");
  			xstream.aliasField("feedesc", Event.class, "feeDescription");
  			xstream.aliasField("feecurrency", Event.class, "feeCurrency");
+ 			xstream.aliasField("myrsvp", Event.class, "myRsvp");
  		}
  		else
  		{
