@@ -209,7 +209,10 @@ public class Client
 			{
 					try
 					{
-						entity.consumeContent();
+						if (entity != null)
+						{
+							entity.consumeContent();
+						}
 					} 
 					catch (IOException ignored)
 					{

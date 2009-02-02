@@ -26,6 +26,8 @@ public class Event
 	private String feeDescription;
 	private String questions;
 	private String name;
+	private String myRsvp;
+	
 	public String getLongitude()
 	{
 		return longitude;
@@ -187,6 +189,17 @@ public class Event
 		this.name = name;
 	}
 
+	
+	public String getMyRsvp()
+	{
+		return myRsvp;
+	}
+	
+	public void setMyRsvp(String s)
+	{
+		this.myRsvp = s;
+	}
+	
 	public String toString()
 	{
 		return ToStringBuilder.build(this);
