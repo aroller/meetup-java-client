@@ -141,8 +141,6 @@ public class Client
 			url += "/" + extraPath;
 		}
 		
-		url += buildQueryString(params);
-		
 		if (getUseOAuth())
 		{
 			
@@ -175,6 +173,8 @@ public class Client
 		}
 		else
 		{
+			
+			url += buildQueryString(params);
 			
 			HttpGet get = new HttpGet(url);
 			
