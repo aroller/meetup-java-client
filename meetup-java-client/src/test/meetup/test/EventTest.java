@@ -8,7 +8,7 @@ public class EventTest extends AbstractClientTest
 {
 	 
 
-	public void testGetEventByZipCode() throws Exception
+	public void callGetEventByZipCode() throws Exception
 	{
 		EventSearchCriteria crit = new EventSearchCriteria();
 		
@@ -24,7 +24,7 @@ public class EventTest extends AbstractClientTest
 		
 	}
 	
-	public void testGetEventByLatLong() throws Exception
+	public void callGetEventByLatLong() throws Exception
 	{
 		EventSearchCriteria crit = new EventSearchCriteria();
 		
@@ -42,7 +42,7 @@ public class EventTest extends AbstractClientTest
 		
 	}
 	
-	public void testGetEventByCity() throws Exception
+	public void callGetEventByCity() throws Exception
 	{
 		EventSearchCriteria crit = new EventSearchCriteria();
 		
@@ -58,7 +58,7 @@ public class EventTest extends AbstractClientTest
 		
 	}
 
-	public void testBeforeAndAfter() throws Exception
+	public void callBeforeAndAfter() throws Exception
 	{
 		EventSearchCriteria crit = new EventSearchCriteria();
 		

@@ -3,7 +3,11 @@ package meetup.test;
 
 import junit.framework.TestCase;
 import meetup.*;
+
+import java.lang.reflect.Method;
 import java.util.*;
+
+import javax.swing.JOptionPane;
 
 public abstract class AbstractClientTest extends TestCase
 {
@@ -48,4 +52,52 @@ public abstract class AbstractClientTest extends TestCase
 		
 	}
 
+	public void test() throws Exception
+	{
+		String className = this.getClass().getName().toLowerCase();
+		
+		if (className.indexOf("oauth") != -1)
+		{
+			oauth = true;
+		}
+		else
+		{
+			oauth = false;
+		}
+		
+		Method[] allMethods = this.getClass().getMethods();
+	
+		
+		for (Method m : allMethods)
+		{
+			if (m.getName().startsWith("call"))
+			{
+				try
+				{
+					invokeMethod(m);
+				}
+				catch (Exception ex)
+				{
+					Throwable cause = ex.getCause();
+					
+					if (cause instanceof UserAuthorizationRequiredException)
+					{
+						String url = ((UserAuthorizationRequiredException) cause).getUrl();
+						
+						JOptionPane.showInputDialog(null, "URL:  " + url, url);
+						
+						getClient().fetchAccessToken();
+						
+						invokeMethod(m);
+					}
+				}
+			}
+		}
+		
+	}
+	
+	public void invokeMethod(Method m) throws Exception
+	{
+		m.invoke(this, new Object[0]);
+	}
 }
