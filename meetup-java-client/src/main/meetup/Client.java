@@ -42,7 +42,7 @@ public class Client
 {
 	
 	static private final String MEETUP_ENDPOINT_URL = "http://api.meetup.com";
-	static private final String OAUTH_REQUEST_TOKEN_URL = "http://www.meetup.com/oauth/request";
+	static private final String OAUTH_REQUEST_TOKEN_URL = "http://www.meetup.com/oauth/request/";
 	static private final String OAUTH_AUTHORIZE_URL = "http://www.meetup.com/authorize";
 	static private final String OAUTH_ACCESS_TOKEN_URL = "http://www.meetup.com/oauth/access";
 	
@@ -145,8 +145,12 @@ public class Client
 		
 		if (getUseOAuth())
 		{
+			
+			checkUserAccessToken();
+			
 			try
 			{
+
 				
 				Token token = this.getClientSettings().getUserSpecificAccessToken();
 				
@@ -159,7 +163,9 @@ public class Client
 				
 				OAuthMessage responseMsg = client.invoke(access, method, url, params.entrySet());
 				
-				return responseMsg.readBodyAsString();
+				String responseBody = responseMsg.readBodyAsString();
+				
+				return responseBody;
 				
 			} 
 			catch (Exception e) 
@@ -333,7 +339,7 @@ public class Client
 	protected void checkUserAccessToken() throws UserAuthorizationRequiredException
 	{
 		
-		if ( hasValidUserAccessToken() == false)
+		if ( hasValidUserAccessToken() == false )
 		{
 			
 			if ( (this.requestToken != null) && (this.requestToken.isValid()) )

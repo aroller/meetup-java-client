@@ -1,7 +1,7 @@
 
 package meetup;
 
-public class UserAuthorizationRequiredException extends Exception
+public class UserAuthorizationRequiredException extends RuntimeException
 {
 	
 	public UserAuthorizationRequiredException(String url)
