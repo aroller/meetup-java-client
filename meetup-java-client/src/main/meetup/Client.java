@@ -52,7 +52,8 @@ public class Client
 	private Token requestToken = new Token();
 	private ClientSettings settings;
 	private boolean compressionEnabled = false;
-
+	private boolean useOAuth = false;
+	
 	static
 	{
 		System.getProperties().put("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
@@ -83,25 +84,20 @@ public class Client
 	}
 	
 
-	protected Response sendApiRequestWithOAuth(java.util.Map<String, String>params, String extraPath)
-	{
-		return sendApiRequest(params, extraPath, true);
-	}
 	
 	protected Response sendApiRequest(String extraPath)
 	{
-		return sendApiRequest( null, extraPath, false);
+		return sendApiRequest( null, extraPath);
 	}
 	
 	
-	protected Response sendApiRequest(java.util.Map<String, String> params, String extraPath, boolean useOAuth)
+	protected Response sendApiRequest(java.util.Map<String, String> params, String extraPath)
 	{
 		
 		String rsp = sendHttpRequest(MEETUP_ENDPOINT_URL, 
 					 						"GET", 
 					 						extraPath,
-					 						params, 
-					 						useOAuth);
+					 						params);
 		
 		Class clazz = null;
 		
@@ -125,8 +121,7 @@ public class Client
 	protected String sendHttpRequest(String baseUrl, 
 									String method, 
 									String extraPath, 
-									java.util.Map<String, String> params, 
-									boolean useOAuth)
+									java.util.Map<String, String> params)
 	{
 		
 		if (params == null)
@@ -148,7 +143,7 @@ public class Client
 		
 		url += buildQueryString(params);
 		
-		if (useOAuth)
+		if (getUseOAuth())
 		{
 			try
 			{
@@ -326,7 +321,7 @@ public class Client
 		
 		Map<String, String> params = criteria.getParameterMap();
 		
-		Response r = sendApiRequest(params, "groups.xml", false);
+		Response r = sendApiRequest(params, "groups.xml");
 		
 		List<Group> groups = r.getGroups();
 		
@@ -537,7 +532,7 @@ public class Client
 	public List<Event> getEvents(EventSearchCriteria crit)
 	{
 		
-		Response r = sendApiRequest(crit.getParameterMap(), "events.xml", false);
+		Response r = sendApiRequest(crit.getParameterMap(), "events.xml");
 		
 		return r.getEvents();
 	}
@@ -608,7 +603,7 @@ public class Client
 		
 		Map<String, String> params = criteria.getParameterMap();
 		
-		Response r = sendApiRequest(params, "topics.xml", false);
+		Response r = sendApiRequest(params, "topics.xml");
 		
 		List<Topic> topics = r.getTopics();
 		
@@ -641,5 +636,13 @@ public class Client
 		return compressionEnabled;
 	}
 
-
+	public void setUseOAuth(boolean b)
+	{
+		this.useOAuth = b;
+	}
+	
+	public boolean getUseOAuth()
+	{
+		return this.useOAuth;
+	}
 }
