@@ -15,7 +15,7 @@ public class EventTest extends AbstractClientTest
 		crit.setZipCode("97209");
 		crit.setRadiusInMiles(2);
 		
-		List<Event> events = c.getEvents(crit);
+		List<Event> events = getClient().getEvents(crit);
 		
 		assertNotNull(events);
 		
@@ -34,7 +34,7 @@ public class EventTest extends AbstractClientTest
 		crit.setLongitude("-122.691806");
 		crit.setRadiusInMiles(2);
 		
-		List<Event> events = c.getEvents(crit);
+		List<Event> events = getClient().getEvents(crit);
 		
 		assertNotNull(events);
 		
@@ -50,7 +50,7 @@ public class EventTest extends AbstractClientTest
 		crit.setState("IL");
 		crit.setCountry("US");
 		
-		List<Event> events = c.getEvents(crit);
+		List<Event> events = getClient().getEvents(crit);
 		
 		assertNotNull(events);
 		
@@ -75,7 +75,7 @@ public class EventTest extends AbstractClientTest
 		crit.setBefore(before);
 		crit.setAfter(after);
 		
-		List<Event> events = c.getEvents(crit);
+		List<Event> events = getClient().getEvents(crit);
 		
 		assertNotNull(events);
 		

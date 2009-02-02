@@ -13,7 +13,7 @@ public class TopicTest extends AbstractClientTest
 		TopicSearchCriteria crit = new TopicSearchCriteria();
 		
 		crit.setSearch("photography");
-		List<Topic> topics = c.getTopics(crit);
+		List<Topic> topics = getClient().getTopics(crit);
 		
 		assertNotNull(topics);
 		

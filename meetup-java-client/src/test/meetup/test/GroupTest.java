@@ -13,7 +13,7 @@ public class GroupTest extends AbstractClientTest
 		GroupSearchCriteria crit = new GroupSearchCriteria();
 		
 		crit.setZipCode("97203");
-		List<Group> groups = c.getGroups(crit);
+		List<Group> groups = getClient().getGroups(crit);
 		
 		assertNotNull(groups);
 		
@@ -29,7 +29,7 @@ public class GroupTest extends AbstractClientTest
 		crit.setState("MA");
 		crit.setCountry("US");
 		
-		List<Group> groups = c.getGroups(crit);
+		List<Group> groups = getClient().getGroups(crit);
 		
 		assertNotNull(groups);
 		

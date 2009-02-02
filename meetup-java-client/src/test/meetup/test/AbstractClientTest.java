@@ -7,21 +7,28 @@ import java.util.*;
 
 public abstract class AbstractClientTest extends TestCase
 {
-	protected Client c;
-	 
+	private Client c;
+	protected boolean oauth = false;
+	
 	public void setUp() 
 	{
 		
 		ClientSettings settings = new ClientSettings();
-		settings.setMeetupKey("116528185c6768552f13a6171217fb");
 		
-		// todo (?) Token userToken = new Token("", "");
-		// settings.setUserSpecificAccessToken(userToken);
+		settings.setMeetupKey("116528185c6768552f13a6171217fb");
+		settings.setConsumerToken(new Token("verb.for.shoe", "f5281e69ea6b3c14399b67b8"));
+		settings.setOAuthCallbackUrl("x-meetup-demo://app");
 		
 		c = new Client();
 		c.setClientSettings(settings);
-		
 	}
+	
+	public Client getClient()
+	{
+		c.setUseOAuth(oauth);
+		return c;
+	}
+	
 	
 	public void assertEvents(List<Event> events)
 	{
