@@ -15,9 +15,7 @@ public class GroupTest extends AbstractClientTest
 		crit.setZipCode("97203");
 		List<Group> groups = getClient().getGroups(crit);
 		
-		assertNotNull(groups);
-		
-		assertTrue(groups.size() > 0);
+		assertGroups(groups);
 		
 	}
 	
@@ -31,9 +29,7 @@ public class GroupTest extends AbstractClientTest
 		
 		List<Group> groups = getClient().getGroups(crit);
 		
-		assertNotNull(groups);
-		
-		assertTrue(groups.size() > 0);
+		assertGroups(groups);
 		
 	}
 	
@@ -46,9 +42,7 @@ public class GroupTest extends AbstractClientTest
 		
 		List<Group> groups = getClient().getGroups(crit);
 		
-		assertNotNull(groups);
-		
-		assertTrue(groups.size() > 0);
+		assertGroups(groups);
 		
 	}
 
@@ -61,9 +55,7 @@ public class GroupTest extends AbstractClientTest
 		
 		List<Group> groups = getClient().getGroups(crit);
 		
-		assertNotNull(groups);
-		
-		assertTrue(groups.size() > 0);
+		assertGroups(groups);
 		
 	}
 }

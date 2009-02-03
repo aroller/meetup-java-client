@@ -42,16 +42,84 @@ public abstract class AbstractClientTest extends TestCase
 		
 		for (Event e : events)
 		{
-			assertTrue(e);
+			assertValid(e);
 		}
 	}
 	
-	public void assertTrue(Event e)
+	public void assertValid(Event e)
 	{
 		assertNotNull(e);
+	
+		assertNotNull(e.getDescription());
 		
+		assertNotNull(e.getEventUrl());
+		
+		assertNotNull(e.getId());
+		
+		assertNotNull(e.getTime());
+		
+		assertNotNull(e.getUpdated());
+		
+		assertNotNull(e.getName());
+		
+		assertNotNull(e.getGroupName());
+		
+		assertNotNull(e.getAttendeeCount());
 	}
 
+	public void assertTopics(List<Topic> topics)
+	{
+		assertNotNull(topics);
+		
+		assertTrue(topics.size() > 0);
+		
+		for (Topic t : topics)
+		{
+			assertValid(t);
+		}
+	}
+	
+	public void assertValid(Topic t)
+	{
+		assertNotNull(t);
+		assertNotNull(t.getDescription());
+		assertNotNull(t.getId());
+		assertNotNull(t.getUpdated());
+		assertNotNull(t.getLink());
+		assertNotNull(t.getMembers());
+	}
+
+	protected void assertGroups(List<Group> groups)
+	{
+		assertNotNull(groups);
+		
+		assertTrue(groups.size() > 0);
+		
+		for (Group g : groups)
+		{
+			assertValid(g);
+		}
+	}
+	
+	protected void assertValid(Group g)
+	{
+		
+		assertNotNull(g);
+		
+		assertNotNull(g.getId());
+		
+		assertNotNull(g.getCreated());
+		
+		assertNotNull(g.getDescription());
+		
+		assertNotNull(g.getUpdated());
+		
+		assertNotNull(g.getCountry());
+		
+		assertNotNull(g.getName());
+		
+	}
+	
 	public void test() throws Exception
 	{
 		String className = this.getClass().getName().toLowerCase();

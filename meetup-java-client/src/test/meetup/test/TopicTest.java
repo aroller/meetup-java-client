@@ -8,16 +8,25 @@ public class TopicTest extends AbstractClientTest
 {
 	 
 	
-	public void testTopicSearchByKeyword() throws Exception
+	public void testTopicSearch() throws Exception
 	{
+		
 		TopicSearchCriteria crit = new TopicSearchCriteria();
 		
 		crit.setSearch("photography");
+		
 		List<Topic> topics = getClient().getTopics(crit);
 		
-		assertNotNull(topics);
+		assertTopics(topics);
+	
+		Topic t = topics.get(0);
 		
-		assertTrue(topics.size() > 0);
+		crit = new TopicSearchCriteria();
+		crit.setName(t.getName());
+		
+		topics = getClient().getTopics(crit);
+		
+		assertTopics(topics);
 		
 	}
 	
