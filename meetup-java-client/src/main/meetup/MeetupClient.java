@@ -38,7 +38,7 @@ import net.oauth.client.httpclient4.HttpClient4;
  *   @author Sean C. Sullivan
  *   
  */
-public class Client
+public class MeetupClient
 {
 	
 	static private final String MEETUP_ENDPOINT_URL = "http://api.meetup.com";
@@ -60,12 +60,12 @@ public class Client
 		System.getProperties().put("org.apache.commons.logging.simplelog.defaultlog", "trace");
 	}
 	
-	public Client()
+	public MeetupClient()
 	{
 		this(new DefaultHttpClient());
 	}
 	
-	public Client(final HttpClient hClient)
+	public MeetupClient(final HttpClient hClient)
 	{
 		this.httpClient = hClient;
 		

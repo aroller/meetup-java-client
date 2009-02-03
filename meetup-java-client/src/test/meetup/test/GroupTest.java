@@ -21,7 +21,7 @@ public class GroupTest extends AbstractClientTest
 		
 	}
 	
-	public void testGetGroupsByCity() throws Exception
+	public void testGetGroupsBoston() throws Exception
 	{
 		GroupSearchCriteria crit = new GroupSearchCriteria();
 		
@@ -37,4 +37,33 @@ public class GroupTest extends AbstractClientTest
 		
 	}
 	
+	public void testGetGroupsLondon() throws Exception
+	{
+		GroupSearchCriteria crit = new GroupSearchCriteria();
+		
+		crit.setCity("London");
+		crit.setCountry("UK");
+		
+		List<Group> groups = getClient().getGroups(crit);
+		
+		assertNotNull(groups);
+		
+		assertTrue(groups.size() > 0);
+		
+	}
+
+
+	public void testGetGroupsBrazil() throws Exception
+	{
+		GroupSearchCriteria crit = new GroupSearchCriteria();
+		
+		crit.setCountry("Brazil");
+		
+		List<Group> groups = getClient().getGroups(crit);
+		
+		assertNotNull(groups);
+		
+		assertTrue(groups.size() > 0);
+		
+	}
 }

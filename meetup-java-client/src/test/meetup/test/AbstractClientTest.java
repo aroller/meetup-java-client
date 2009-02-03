@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public abstract class AbstractClientTest extends TestCase
 {
-	private Client c;
+	private MeetupClient c;
 	protected boolean oauth = false;
 	
 	public void setUp() 
@@ -23,11 +23,11 @@ public abstract class AbstractClientTest extends TestCase
 		settings.setConsumerToken(new Token("verb.for.shoe", "f5281e69ea6b3c14399b67b8"));
 		settings.setOAuthCallbackUrl("x-meetup-demo://app");
 		
-		c = new Client();
+		c = new MeetupClient();
 		c.setClientSettings(settings);
 	}
 	
-	public Client getClient()
+	public MeetupClient getClient()
 	{
 		c.setUseOAuth(oauth);
 		return c;
