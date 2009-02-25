@@ -7,6 +7,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.*;
 
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.apache.http.client.*;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.params.AllClientPNames;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.util.EntityUtils;
 
 import com.thoughtworks.xstream.XStream;
@@ -46,7 +48,7 @@ public class MeetupClient
 	static private final String OAUTH_AUTHORIZE_URL = "http://www.meetup.com/authorize/";
 	static private final String OAUTH_ACCESS_TOKEN_URL = "http://www.meetup.com/oauth/access/";
 	
-	private HttpClient httpClient;
+	private DefaultHttpClient httpClient;
 	private OAuthClient authClient;
 	private OAuthServiceProvider authProvider;
 	private Token requestToken = new Token();
@@ -67,9 +69,11 @@ public class MeetupClient
 	
 	public MeetupClient(final HttpClient hClient)
 	{
-		this.httpClient = hClient;
 		
-	
+		this.httpClient = (DefaultHttpClient) hClient;
+		
+		this.httpClient.setHttpRequestRetryHandler(new DefaultHttpRequestRetryHandler(0, false));
+		
 		this.setUserAgent("meetup-java-client");
 		
 		this.setSocketTimeout( (30 * 1000) );
