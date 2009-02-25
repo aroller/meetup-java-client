@@ -3,11 +3,11 @@ package meetup;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.*;
 
-import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -29,6 +29,7 @@ import net.oauth.OAuthMessage;
 import net.oauth.OAuthServiceProvider;
 import net.oauth.client.OAuthClient;
 import net.oauth.client.httpclient4.HttpClient4;
+import net.oauth.client.httpclient4.HttpClientPool;
 
 /**
  * 
@@ -247,7 +248,15 @@ public class MeetupClient
 	protected OAuthClient createOAuthClient()
 	{
 		
-		OAuthClient authClient = new OAuthClient(new HttpClient4());
+		OAuthClient authClient = new OAuthClient(new HttpClient4(new HttpClientPool()
+				{
+
+					public HttpClient getHttpClient(URL server)
+					{
+						return MeetupClient.this.httpClient;
+					}
+			
+				}));
 		
 		return authClient;
 	}
