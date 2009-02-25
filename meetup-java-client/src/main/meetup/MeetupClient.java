@@ -73,7 +73,7 @@ public class MeetupClient
 		
 		this.httpClient = (DefaultHttpClient) hClient;
 		
-		this.httpClient.setHttpRequestRetryHandler(new DefaultHttpRequestRetryHandler(0, false));
+		this.httpClient.setHttpRequestRetryHandler(new DefaultHttpRequestRetryHandler(1, false));
 		
 		this.setUserAgent("meetup-java-client");
 		
@@ -327,7 +327,7 @@ public class MeetupClient
 
 		if (this.compressionEnabled)
 		{
-			c.setProperty(OAuthClient.ACCEPT_ENCODING, "gzip, deflate");
+			c.setProperty(OAuthClient.ACCEPT_ENCODING, "gzip");
 		}
 		
 		return c;
