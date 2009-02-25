@@ -30,8 +30,11 @@ public class XStreamFactory
 		xstream.aliasField("lat", Response.Header.class, "latitude");
 		xstream.aliasField("total_count", Response.Header.class, "totalCount");
 		
-		
- 		if (clazz == Group.class)
+		if (clazz == null)
+		{
+			throw new NullPointerException("clazz parameter is null");
+		}
+		else if (clazz == Group.class)
  		{
  			xstream.aliasField("items", Response.class, "groups");
  			xstream.alias("item", Group.class);
