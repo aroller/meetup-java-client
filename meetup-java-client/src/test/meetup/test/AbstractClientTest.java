@@ -158,6 +158,10 @@ public abstract class AbstractClientTest extends TestCase
 						
 						invokeMethod(m);
 					}
+					else
+					{
+						throw ex;
+					}
 				}
 			}
 		}
