@@ -74,7 +74,7 @@
     <dependency>
         <groupId>net.oauth</groupId>
         <artifactId>oauth-core</artifactId>
-        <version>20090221</version>
+        <version>20090408</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
