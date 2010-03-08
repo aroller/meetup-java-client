@@ -199,6 +199,12 @@ public class MeetupClient
 					msg.append("\n");
 					msg.append("statusCode=" + statusCode);
 					
+					msg.append("\nmethod=");
+					msg.append(get.getMethod());
+					
+					msg.append("\n");
+					msg.append(get.getRequestLine().getUri());
+					
 					try
 					{
 						String responseBody = EntityUtils.toString(response.getEntity()); 
