@@ -5,7 +5,9 @@ import meetup.*;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.extended.ToStringConverter;
+import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.mapper.MapperWrapper;
 
 public class XStreamFactory
 {
@@ -16,19 +18,23 @@ public class XStreamFactory
 		
 		// todo (future) : use XppDriver instead of DomDriver
 		
-	    XStream xstream = new XStream(new DomDriver());
+	    XStream xstream = new XStream(new PureJavaReflectionProvider(), new DomDriver())
+		{
+			protected MapperWrapper wrapMapper(MapperWrapper next)
+			{
+				return new CustomMapper(next);
+			}
+		};
+		
+		xstream.autodetectAnnotations(true);
 		
  		xstream.registerConverter(new CalendarConverter(), XStream.PRIORITY_VERY_HIGH);
  		xstream.registerConverter(new IntConverter(), XStream.PRIORITY_VERY_HIGH);
  		
-
 		xstream.alias("results", Response.class);
 		xstream.aliasField("head", Response.class, "header");
 		
 		xstream.alias("head", Response.Header.class);
-		xstream.aliasField("lon", Response.Header.class, "longitude");
-		xstream.aliasField("lat", Response.Header.class, "latitude");
-		xstream.aliasField("total_count", Response.Header.class, "totalCount");
 		
 		if (clazz == null)
 		{
@@ -38,37 +44,19 @@ public class XStreamFactory
  		{
  			xstream.aliasField("items", Response.class, "groups");
  			xstream.alias("item", Group.class);
- 			xstream.aliasField("lat", Group.class, "latitude");
- 			xstream.aliasField("lon", Group.class, "longitude");
- 			xstream.aliasField("organizerProfileURL", Group.class, "organizerProfileUrl");
- 			xstream.aliasField("photo_url", Group.class, "photoUrl");
- 			xstream.aliasField("daysleft", Group.class, "daysLeft");
+ 			xstream.aliasField("topics", Group.class, "topics");
+ 			xstream.alias("topics_item", Topic.class);
  		}
  		else if (clazz == Topic.class)
  		{
  			xstream.aliasField("items", Response.class, "topics");
  			xstream.alias("item", Topic.class);
- 			xstream.aliasField("lat", Topic.class, "latitude");
- 			xstream.aliasField("lon", Topic.class, "longitude");
  		}
  		else if (clazz == Event.class)
  		{
- 			xstream.alias("item", Event.class);
+ 	 		// xstream.registerLocalConverter(Event.class, "rsvpCutoff", new RsvpCutoffConverter());
  			xstream.aliasField("items", Response.class, "events");
- 			xstream.aliasField("ismeetup", Event.class,  "isMeetup");
- 			xstream.aliasField("lat", Event.class, "latitude");
- 			xstream.aliasField("lon", Event.class, "longitude");
- 			xstream.aliasField("venue_lat", Event.class, "venueLatitude");
- 			xstream.aliasField("venue_lon", Event.class, "venueLongitude");
- 			xstream.aliasField("venue_name", Event.class, "venueName");
- 			xstream.aliasField("group_name", Event.class, "groupName");
- 			xstream.aliasField("attendee_count", Event.class, "attendeeCount");
- 			xstream.aliasField("rsvpcount", Event.class, "rsvpCount");
- 			xstream.aliasField("photo_url", Event.class, "photoUrl");
- 			xstream.aliasField("event_url", Event.class, "eventUrl");
- 			xstream.aliasField("feedesc", Event.class, "feeDescription");
- 			xstream.aliasField("feecurrency", Event.class, "feeCurrency");
- 			xstream.aliasField("myrsvp", Event.class, "myRsvp");
+ 			xstream.alias("item", Event.class);
  		}
  		else
  		{

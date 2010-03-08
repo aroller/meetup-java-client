@@ -4,29 +4,95 @@ package meetup;
 import java.util.*;
 import java.math.*;
 
+import meetup.internal.xstream.RsvpCutoffConverter;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
+
+/**
+ *  
+ *   Event
+ *
+ */
 public class Event
 {
 	private String longitude;
 	private String latitude;
+	
+	@XStreamAlias("rsvpcount")
 	private Integer rsvpCount;
+	
+	@XStreamAlias("maybe_rsvpcount")
+	private Integer maybeRsvpCount;
+	
 	private String groupName;
+	
+	private String groupId;
+	
+	@XStreamAlias("feecurrency")
 	private String feeCurrency;
 	private Calendar time;
 	private Calendar updated;
+	
+	@XStreamAlias("ismeetup")
 	private Boolean isMeetup;
+	
+	private Boolean allowMaybeRsvp;
+	
+	@XStreamAlias("no_rsvpcount")
+	private Boolean noRsvpCount;
+	
 	private String eventUrl;
+	
+	
 	private Integer attendeeCount;
+	
+	private Integer rsvpLimit;
+	
 	private String id;
+	private String organizerId;
+	private String organizerName;
+	
+	@XStreamAlias("venue_lon")
 	private String venueLongitude;
+	@XStreamAlias("venue_lat")
 	private String venueLatitude;
 	private BigDecimal fee;
+	
+	private String venueId;
+	
 	private String venueName;
+
+	private String venueState;
+	private String venueCity;
+	private String venueZip;
+	private String venueMap;
+	private String venueVisibility;
+	private String venuePhone;
+	
+	private String venueAddress1;
+	private String venueAddress2;
+	private String venueAddress3;
+	
 	private String description;
 	private String photoUrl;
+	
+	private String groupPhotoUrl;
+	
+	@XStreamAlias("feedesc")
 	private String feeDescription;
 	private String questions;
 	private String name;
+	
+	@XStreamAlias("myrsvp")
 	private String myRsvp;
+	
+	@XStreamConverter(RsvpCutoffConverter.class)
+	private Calendar rsvpCutoff;
+	
+	private String status;
+	
+	private Boolean rsvpClosed;
 	
 	public String getLongitude()
 	{
@@ -204,5 +270,231 @@ public class Event
 	{
 		return ToStringBuilder.build(this);
 	}
+
+	public Calendar getRsvpCutoff()
+	{
+		return rsvpCutoff;
+	}
+	
+	public void setRsvpCutoff(Calendar c)
+	{
+		this.rsvpCutoff = c;
+	}
+	
+	public boolean hasRsvpCutoff()
+	{
+		return (this.getRsvpCutoff() != null);
+	}
+	
+	public String getVenueState()
+	{
+		return venueState;
+	}
+	
+	public void setVenueState(String vs)
+	{
+		this.venueState = vs;
+	}
+	
+	public String getVenueAddress1()
+	{
+		return venueAddress1;
+	}
+	
+	public void setVenueAddress1(String va1)
+	{
+		this.venueAddress1 = va1;
+	}
+	
+	public String getVenueAddress2()
+	{
+		return venueAddress2;
+	}
+	
+	public void setVenueAddress2(String va2)
+	{
+		this.venueAddress2 = va2;
+	}
+	
+	public String getVenueAddress3()
+	{
+		return venueAddress3;
+	}
+	
+	public void setVenueAddress3(String va3)
+	{
+		this.venueAddress3 = va3;
+	}
+	
+	public String getOrganizerId()
+	{
+		return organizerId;
+	}
+	
+	public void setOrganizerId(String oid)
+	{
+		this.organizerId = oid;
+	}
+	public String getVenueId()
+	{
+		return venueId;
+	}
+	public void setVenueId(String venueId)
+	{
+		this.venueId = venueId;
+	}
+	
+	public String getStatus()
+	{
+		return status;
+	}
+	
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+	
+	public boolean isRsvpClosed()
+	{
+		if (rsvpClosed == null)
+		{
+			return false;
+		}
+		else
+		{
+			return rsvpClosed.booleanValue();
+		}
+	}
+	
+	public void setRsvpClosed(Boolean rsvpClosed)
+	{
+		this.rsvpClosed = rsvpClosed;
+	}
+	
+	public Integer getMaybeRsvpCount()
+	{
+		return maybeRsvpCount;
+	}
+	
+	public void setMaybeRsvpCount(Integer maybeRsvpCount)
+	{
+		this.maybeRsvpCount = maybeRsvpCount;
+	}
+	
+	public String getGroupId()
+	{
+		return groupId;
+	}
+	
+	public void setGroupId(String groupId)
+	{
+		this.groupId = groupId;
+	}
+	public String getOrganizerName()
+	{
+		return organizerName;
+	}
+	public void setOrganizerName(String organizerName)
+	{
+		this.organizerName = organizerName;
+	}
+	public String getVenueCity()
+	{
+		return venueCity;
+	}
+	public void setVenueCity(String venueCity)
+	{
+		this.venueCity = venueCity;
+	}
+	public String getVenueZip()
+	{
+		return venueZip;
+	}
+	public void setVenueZip(String venueZip)
+	{
+		this.venueZip = venueZip;
+	}
+	public String getVenueMap()
+	{
+		return venueMap;
+	}
+	public void setVenueMap(String venueMap)
+	{
+		this.venueMap = venueMap;
+	}
+	
+	public String getVenueVisibility()
+	{
+		return venueVisibility;
+	}
+	
+	public void setVenueVisibility(String venueVisibility)
+	{
+		this.venueVisibility = venueVisibility;
+	}
+	
+	public String getGroupPhotoUrl()
+	{
+		return groupPhotoUrl;
+	}
+	
+	public void setGroupPhotoUrl(String groupPhotoUrl)
+	{
+		this.groupPhotoUrl = groupPhotoUrl;
+	}
+	
+	public Boolean getAllowMaybeRsvp()
+	{
+		if (allowMaybeRsvp == null)
+		{
+			return false;
+		}
+		else
+		{
+			return allowMaybeRsvp;
+		}
+	}
+	
+	public void setAllowMaybeRsvp(Boolean allowMaybeRsvp)
+	{
+		this.allowMaybeRsvp = allowMaybeRsvp;
+	}
+	
+	public Boolean getNoRsvpCount()
+	{
+		if (noRsvpCount == null)
+		{
+			return true;
+		}
+		
+		return noRsvpCount;
+	}
+	
+	public void setNoRsvpCount(Boolean noRsvpCount)
+	{
+		this.noRsvpCount = noRsvpCount;
+	}
+	
+	public Integer getRsvpLimit()
+	{
+		return rsvpLimit;
+	}
+	
+	public void setRsvpLimit(Integer limit)
+	{
+		this.rsvpLimit = limit;
+	}
+	
+	public String getVenuePhone()
+	{
+		return venuePhone;
+	}
+	
+	public void setVenuePhone(String venuePhone)
+	{
+		this.venuePhone = venuePhone;
+	}
+	
+
 	
 }

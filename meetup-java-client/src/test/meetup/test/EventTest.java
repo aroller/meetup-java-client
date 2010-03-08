@@ -13,7 +13,7 @@ public class EventTest extends AbstractClientTest
 		EventSearchCriteria crit = new EventSearchCriteria();
 		
 		crit.setZipCode("97209");
-		crit.setRadiusInMiles(2);
+		crit.setRadiusInMiles(100);
 		
 		List<Event> events = getClient().getEvents(crit);
 		

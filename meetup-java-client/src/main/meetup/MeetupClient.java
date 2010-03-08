@@ -194,7 +194,22 @@ public class MeetupClient
 				int statusCode = response.getStatusLine().getStatusCode();
 				if (statusCode != HttpStatus.SC_OK)
 				{
-					throw new RuntimeException("unexpected HTTP response, status code = " + statusCode);
+					StringBuilder msg = new StringBuilder();
+					msg.append("unexpected HTTP response");
+					msg.append("\n");
+					msg.append("statusCode=" + statusCode);
+					
+					try
+					{
+						String responseBody = EntityUtils.toString(response.getEntity()); 
+						msg.append("\nresponse: " + responseBody);
+					}
+					catch (Exception ignored)
+					{
+						// ignore
+					}
+					
+					throw new RuntimeException(msg.toString());
 				}
 				else
 				{

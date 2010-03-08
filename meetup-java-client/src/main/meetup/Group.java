@@ -2,16 +2,39 @@
 package meetup;
 
 import java.util.*;
+import java.math.*;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class Group
 {
 	private String name;
+	
+	private String joinMode;
+	
+	private String groupPhotoCount;
+	
+	@XStreamAlias("group_urlname")
+	private String groupUrlName;
+	
+	private String who;
+	
+	private List<Topic> topics = new ArrayList<Topic>();
+	
 	private String longitude;
 	private String latitude;
 	private String state;
 	private String id;
 	private String zip;
+	
+	private BigDecimal rating;
+	
+	@XStreamAlias("organizerProfileURL")
 	private String organizerProfileUrl;
+	
+	private String organizerId;
+	private String organizerName;
+	
 	private String country;
 	private String photoUrl;
 	private Calendar created;
@@ -20,6 +43,8 @@ public class Group
 	private String link;
 	private String city;
 	private String description;
+	
+	@XStreamAlias("daysleft")
 	private Integer daysLeft;
 	
 	public Group()
