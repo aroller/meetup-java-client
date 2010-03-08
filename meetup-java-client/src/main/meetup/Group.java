@@ -244,6 +244,87 @@ public class Group
 	}
 
 
+	
+	public String getJoinMode()
+	{
+		return joinMode;
+	}
+
+	public void setJoinMode(String joinMode)
+	{
+		this.joinMode = joinMode;
+	}
+
+	public String getGroupPhotoCount()
+	{
+		return groupPhotoCount;
+	}
+
+	public void setGroupPhotoCount(String groupPhotoCount)
+	{
+		this.groupPhotoCount = groupPhotoCount;
+	}
+
+	public String getGroupUrlName()
+	{
+		return groupUrlName;
+	}
+
+	public void setGroupUrlName(String groupUrlName)
+	{
+		this.groupUrlName = groupUrlName;
+	}
+
+	public String getWho()
+	{
+		return who;
+	}
+
+	public void setWho(String who)
+	{
+		this.who = who;
+	}
+
+	public List<Topic> getTopics()
+	{
+		return topics;
+	}
+
+	public void setTopics(List<Topic> topics)
+	{
+		this.topics = topics;
+	}
+
+	public BigDecimal getRating()
+	{
+		return rating;
+	}
+
+	public void setRating(BigDecimal rating)
+	{
+		this.rating = rating;
+	}
+
+	public String getOrganizerId()
+	{
+		return organizerId;
+	}
+
+	public void setOrganizerId(String organizerId)
+	{
+		this.organizerId = organizerId;
+	}
+
+	public String getOrganizerName()
+	{
+		return organizerName;
+	}
+
+	public void setOrganizerName(String organizerName)
+	{
+		this.organizerName = organizerName;
+	}
+
 	public String toString()
 	{
 		return ToStringBuilder.build(this);
