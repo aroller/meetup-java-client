@@ -67,7 +67,7 @@ public class EventTest extends AbstractClientTest
 		crit.setCountry("US");
 		
 		Calendar after = Calendar.getInstance();
-		after.add(Calendar.DAY_OF_YEAR, 1);
+		after.add(Calendar.DAY_OF_YEAR, 2);
 		
 		Calendar before = Calendar.getInstance();
 		before.add(Calendar.DAY_OF_YEAR, 5);
