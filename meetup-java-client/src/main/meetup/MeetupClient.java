@@ -695,4 +695,24 @@ public class MeetupClient
 	{
 		return this.useOAuth;
 	}
+	
+	public void rsvp(String eventId,
+						YesNoMaybe rsvpSetting,
+						Integer guests,
+						String comments,
+						Integer memberId)
+	{
+		// todo
+	}
+	
+	
+	public void uploadPhoto(String eventId, byte[] photo, String caption)
+	{
+		// todo
+	}
+
+	public void uploadPhoto(String eventId, java.io.InputStream photo, String caption)
+	{
+		// todo
+	}
 }
