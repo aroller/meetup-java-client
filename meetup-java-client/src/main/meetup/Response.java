@@ -16,9 +16,12 @@ public class Response
 	
 	private List<Group> groups;
 	private List<Event> events;
-	private List<Topic> topics; 
+	private List<Topic> topics;
+	
+	private List<Activity> activities;
 	
 	private Header header;
+
 	
 	public Response()
 	{
@@ -39,6 +42,16 @@ public class Response
 		this.rsp = rsp;
 	}
 
+	public List<Activity> getActivities()
+	{
+		if (activities == null)
+		{
+			activities = new ArrayList<Activity>();
+		}
+
+		return activities;
+	}
+	
 
 	public List<Group> getGroups()
 	{
@@ -232,5 +245,5 @@ public class Response
 
 		
 	} // end Header class
-	
+
 } // end Response class

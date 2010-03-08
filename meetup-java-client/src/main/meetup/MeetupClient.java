@@ -580,6 +580,13 @@ public class MeetupClient
 		return r.getEvents();
 	}
 	
+	public List<Activity> getActivities(ActivitySearchCriteria crit)
+	{
+		Response r = sendApiRequest(crit.getParameterMap(), "activity.xml");
+		
+		return r.getActivities();
+	}
+	
 	private String buildQueryString(Map<String, String> params)
 	{
 		StringBuffer query = new StringBuffer();
