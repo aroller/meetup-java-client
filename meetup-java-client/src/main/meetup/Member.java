@@ -1,8 +1,6 @@
 
 package meetup;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 public class Member
 {
 	private String id;
@@ -11,10 +9,8 @@ public class Member
 	private String photoUrl;
 	private String bio;
 	
-	@XStreamAlias("lat")
 	private String latitude;
 	
-	@XStreamAlias("lon")
 	private String longitude;
 	
 	private String country;
