@@ -12,8 +12,25 @@ public class EventTest extends AbstractClientTest
 	{
 		EventSearchCriteria crit = new EventSearchCriteria();
 		
-		crit.setZipCode("97209");
-		crit.setRadiusInMiles(100);
+		crit.setZipCode("97206");
+		crit.setRadiusInMiles(20);
+		
+		List<Event> events = getClient().getEvents(crit);
+		
+		assertNotNull(events);
+		
+		assertTrue(events.size() > 0);
+		
+		
+	}
+
+	public void callGetEventByTopic() throws Exception
+	{
+		EventSearchCriteria crit = new EventSearchCriteria();
+		
+		crit.setZipCode("97206");
+		crit.setTopic("singles");
+		crit.setRadiusInMiles(10);
 		
 		List<Event> events = getClient().getEvents(crit);
 		
