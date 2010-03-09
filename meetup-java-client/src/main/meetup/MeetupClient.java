@@ -1,18 +1,26 @@
 
 package meetup;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.*;
 
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.content.InputStreamBody;
+import org.apache.http.entity.mime.content.StringBody;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.*;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.params.AllClientPNames;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
@@ -702,17 +710,85 @@ public class MeetupClient
 						String comments,
 						Integer memberId)
 	{
-		// todo
+		Map<String, String> params = new HashMap<String, String>();
+		
+		params.put("event_id", eventId);
+		params.put("rsvp", rsvpSetting.getLowerCaseName());
+		
+		if (guests != null)
+		{
+			params.put("guests", "" + guests);
+		}
+		
+		if (comments != null)
+		{
+			params.put("comments", comments);
+		}
+		
+		if (memberId != null)
+		{
+			params.put("member_id", "" + memberId);
+		}
+
+		String responseBody = sendHttpRequest("/rsvp/", "GET", null, params);
+		
 	}
 	
 	
 	public void uploadPhoto(String eventId, byte[] photo, String caption)
 	{
-		// todo
+		InputStream iStream = new ByteArrayInputStream(photo);
+		
+		uploadPhoto(eventId, iStream, caption);
 	}
 
 	public void uploadPhoto(String eventId, java.io.InputStream photo, String caption)
 	{
-		// todo
+		MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+		
+		InputStreamBody photoBody = new InputStreamBody(photo, "photo");
+		
+		entity.addPart("photo", photoBody);
+		
+		try
+		{
+			entity.addPart("event_id", new StringBody(eventId));
+			
+			if (caption != null)
+			{
+				entity.addPart("caption", new StringBody(caption));
+			}
+		}
+		catch (UnsupportedEncodingException e)
+		{
+			throw new RuntimeException(e);
+		}
+		
+		HttpPost post = new HttpPost();
+		
+		post.setEntity(entity);
+		
+		try
+		{
+			HttpResponse rsp = this.getHttpClient().execute(post);
+			
+			System.out.println(rsp.getStatusLine());
+			
+			if (rsp.getEntity() != null)
+			{
+				System.out.println("responseBody: " + EntityUtils.toString(rsp.getEntity()));
+			}
+		}
+		catch (ClientProtocolException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
