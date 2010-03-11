@@ -3,8 +3,6 @@ package meetup;
 
 import java.util.Calendar;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 public class Topic
 {
 	private String name;

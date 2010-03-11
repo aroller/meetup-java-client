@@ -112,7 +112,7 @@ public class MeetupClient
 					 						extraPath,
 					 						params);
 		
-		Class clazz = null;
+		Class<?> clazz = null;
 		
 		if (extraPath.startsWith("events"))
 		{
@@ -258,7 +258,7 @@ public class MeetupClient
 		
 	}
 
-	protected Response fromString(String rsp, Class clazz)
+	protected Response fromString(String rsp, Class<?> clazz)
 	{
 		System.out.println("Server response: " + rsp);
 		
@@ -356,7 +356,7 @@ public class MeetupClient
 
 		if (this.compressionEnabled)
 		{
-			c.setProperty(OAuthClient.ACCEPT_ENCODING, "gzip");
+			c.setProperty(OAuthConsumer.ACCEPT_ENCODING, "gzip");
 		}
 		
 		return c;
@@ -731,7 +731,8 @@ public class MeetupClient
 		}
 
 		String responseBody = sendHttpRequest("/rsvp/", "GET", null, params);
-		
+	
+		System.out.println("rsvp response: " + responseBody);
 	}
 	
 	
