@@ -126,6 +126,10 @@ public class MeetupClient
 		{
 			clazz = Topic.class;
 		}
+		else if (extraPath.startsWith("activity"))
+		{
+			clazz = Activity.class;
+		}
 		
 		return fromString(rsp, clazz);
 		
