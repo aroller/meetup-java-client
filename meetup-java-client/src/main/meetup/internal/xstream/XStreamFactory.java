@@ -13,7 +13,7 @@ public class XStreamFactory
 {
 
 	
-	public static XStream createXStream(Class clazz) 
+	public static XStream createXStream(Class<?> clazz) 
 	{
 		
 		// todo (future) : use XppDriver instead of DomDriver
@@ -57,6 +57,11 @@ public class XStreamFactory
  	 		// xstream.registerLocalConverter(Event.class, "rsvpCutoff", new RsvpCutoffConverter());
  			xstream.aliasField("items", Response.class, "events");
  			xstream.alias("item", Event.class);
+ 		}
+ 		else if (clazz == Activity.class)
+ 		{
+ 			xstream.aliasField("items", Response.class, "activities");
+ 			xstream.alias("item", Activity.class);
  		}
  		else
  		{
