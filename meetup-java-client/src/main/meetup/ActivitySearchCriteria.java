@@ -30,6 +30,11 @@ public class ActivitySearchCriteria
 
 
 
+	public void setPageStart(Integer page)
+	{
+		this.pageStart = "" + page;
+	}
+	
 	public void setPageStart(String pageStart)
 	{
 		this.pageStart = pageStart;
