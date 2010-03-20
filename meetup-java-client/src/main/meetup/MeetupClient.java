@@ -57,6 +57,8 @@ public class MeetupClient
 	static private final String OAUTH_AUTHORIZE_URL = "http://www.meetup.com/authorize/";
 	static private final String OAUTH_ACCESS_TOKEN_URL = "http://www.meetup.com/oauth/access/";
 	
+	static private final String FORMAT = "xml";
+	
 	private DefaultHttpClient httpClient;
 	private OAuthClient authClient;
 	private OAuthServiceProvider authProvider;
@@ -148,7 +150,7 @@ public class MeetupClient
 		
 		params.put("key", this.getClientSettings().getMeetupKey());
 		
-		params.put("format", "xml");
+		params.put("format", FORMAT);
 		
 		
 		String url = baseUrl;
@@ -376,7 +378,7 @@ public class MeetupClient
 		
 		Map<String, String> params = criteria.getParameterMap();
 		
-		Response r = sendApiRequest(params, "groups.xml");
+		Response r = sendApiRequest(params, "groups." + FORMAT);
 		
 		List<Group> groups = r.getGroups();
 		
@@ -587,14 +589,14 @@ public class MeetupClient
 	public List<Event> getEvents(EventSearchCriteria crit)
 	{
 		
-		Response r = sendApiRequest(crit.getParameterMap(), "events.xml");
+		Response r = sendApiRequest(crit.getParameterMap(), "events." + FORMAT);
 		
 		return r.getEvents();
 	}
 	
 	public List<Activity> getActivities(ActivitySearchCriteria crit)
 	{
-		Response r = sendApiRequest(crit.getParameterMap(), "activity.xml");
+		Response r = sendApiRequest(crit.getParameterMap(), "activity." + FORMAT);
 		
 		return r.getActivities();
 	}
@@ -665,7 +667,7 @@ public class MeetupClient
 		
 		Map<String, String> params = criteria.getParameterMap();
 		
-		Response r = sendApiRequest(params, "topics.xml");
+		Response r = sendApiRequest(params, "topics." + FORMAT);
 		
 		List<Topic> topics = r.getTopics();
 		
