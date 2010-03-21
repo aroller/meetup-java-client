@@ -31,21 +31,7 @@ class CalendarConverter extends AbstractSingleValueConverter
 	@Override
 	public Object fromString(String s)
 	{
-		
-		SimpleDateFormat fmt = new SimpleDateFormat(Util.DATE_PATTERN);
-		
-		try
-		{
-			Date d = fmt.parse(s);
-			Calendar c = Calendar.getInstance();
-			c.setTime(d);
-			
-			return c;
-		} 
-		catch (ParseException e)
-		{
-			throw new RuntimeException(e);
-		}
+		return Util.toCalendar(s);
 	}
 
 	public static void main(String[] args)
