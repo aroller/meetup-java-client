@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import meetup.Util;
+
 //
 // Meetup date format:   
 // 
@@ -30,7 +32,7 @@ class CalendarConverter extends AbstractSingleValueConverter
 	public Object fromString(String s)
 	{
 		
-		SimpleDateFormat fmt = new SimpleDateFormat("EEE MMM dd HH:dd:mm zzz yyyy");
+		SimpleDateFormat fmt = new SimpleDateFormat(Util.DATE_PATTERN);
 		
 		try
 		{
