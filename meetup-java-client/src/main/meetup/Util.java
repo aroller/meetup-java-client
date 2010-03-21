@@ -5,6 +5,8 @@ import java.util.*;
 
 public class Util
 {
+	public static final String DATE_PATTERN = "EEE MMM dd HH:dd:mm zzz yyyy";
+	
 	static public String toString(List<String> listOfStrings)
 	{
 		StringBuilder sb = new StringBuilder();
