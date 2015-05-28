@@ -1,146 +1,84 @@
-
 package com.aawhere.meetup.model;
 
+import java.net.URL;
+import java.util.Date;
 
-public class Member
-{
-	private String id;
+import com.google.gson.annotations.SerializedName;
+
+public class Member {
+
+	private Long id;
+	/**
+	 * id name used when member is embedded
+	 * 
+	 * @see #getId()
+	 */
+	@SerializedName("member_id")
+	private Long memberId;
 	private String name;
-	private String link;
-	private String photoUrl;
 	private String bio;
-	
-	private String latitude;
-	
-	private String longitude;
-	
+	private URL link;
+	private MemberPhoto photo;
+	private Double latitude;
+	private Double longitude;
 	private String country;
 	private String city;
 	private String state;
 
-	
-	public String getId()
-	{
-		return id;
+	private Date visited;
+	private Date joined;
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.build(this);
 	}
 
-
-	public void setId(String id)
-	{
-		this.id = id;
-	}
-
-
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-
-	public String getLink()
-	{
-		return link;
-	}
-
-
-	public void setLink(String link)
-	{
-		this.link = link;
-	}
-
-
-	public String getPhotoUrl()
-	{
-		return photoUrl;
-	}
-
-
-	public void setPhotoUrl(String photoUrl)
-	{
-		this.photoUrl = photoUrl;
-	}
-
-
-	public String getBio()
-	{
+	public String getBio() {
 		return bio;
 	}
 
-
-	public void setBio(String bio)
-	{
-		this.bio = bio;
+	public URL getLink() {
+		return link;
 	}
 
+	public MemberPhoto getPhoto() {
+		return photo;
+	}
 
-	public String getLatitude()
-	{
+	public Double getLatitude() {
 		return latitude;
 	}
 
-
-	public void setLatitude(String latitude)
-	{
-		this.latitude = latitude;
-	}
-
-
-	public String getLongitude()
-	{
+	public Double getLongitude() {
 		return longitude;
 	}
 
-
-	public void setLongitude(String longitude)
-	{
-		this.longitude = longitude;
-	}
-
-
-	public String getCountry()
-	{
+	public String getCountry() {
 		return country;
 	}
 
-
-	public void setCountry(String country)
-	{
-		this.country = country;
-	}
-
-
-	public String getCity()
-	{
+	public String getCity() {
 		return city;
 	}
 
-
-	public void setCity(String city)
-	{
-		this.city = city;
-	}
-
-
-	public String getState()
-	{
+	public String getState() {
 		return state;
 	}
 
-
-	public void setState(String state)
-	{
-		this.state = state;
+	public Date getVisited() {
+		return visited;
 	}
 
-
-	public String toString()
-	{
-		return ToStringBuilder.build(this);
+	public Date getJoined() {
+		return joined;
 	}
+
+	public Long getId() {
+		return (id != null) ? id : memberId;
+	}
+
 }

@@ -20,6 +20,13 @@ public class Rsvp {
 	private String answers;
 
 	private Venue venue;
+	private Event event;
+	private Member member;
+	private MemberPhoto memberPhoto;
+
+	public Event getEvent() {
+		return event;
+	}
 
 	public Venue getVenue() {
 		return venue;
@@ -64,5 +71,13 @@ public class Rsvp {
 	@Override
 	public String toString() {
 		return ToStringBuilder.build(this);
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public MemberPhoto getMemberPhoto() {
+		return memberPhoto;
 	}
 }
