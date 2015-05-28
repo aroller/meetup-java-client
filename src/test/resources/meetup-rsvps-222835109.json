@@ -1,0 +1,101 @@
+{
+	"results":[
+		{
+			"venue":{
+				"zip":"94109",
+				"country":"us",
+				"city":"San Francisco",
+				"phone":"(415) 776-5552",
+				"address_1":"1751 Sacramento St",
+				"name":"Old First Church",
+				"lon":-122.421934,
+				"id":689963,
+				"state":"CA",
+				"lat":37.791374,
+				"repinned":false
+			},
+			"created":1432796667000,
+			"response":"yes",
+			"member_photo":{
+				"highres_link":"http://photos4.meetupstatic.com/photos/member/9/8/7/6/highres_246399030.jpeg",
+				"photo_id":246399030,
+				"photo_link":"http://photos4.meetupstatic.com/photos/member/9/8/7/6/member_246399030.jpeg",
+				"thumb_link":"http://photos4.meetupstatic.com/photos/member/9/8/7/6/thumb_246399030.jpeg"
+			},
+			"guests":0,
+			"member":{
+				"member_id":187678769,
+				"name":"Aaron Roller"
+			},
+			"rsvp_id":1553124106,
+			"mtime":1432796667000,
+			"event":{
+				"name":"Test Event Test Event Test Event Test Event",
+				"id":"222835109",
+				"time":1432825200000,
+				"event_url":"http://www.meetup.com/Meetup-API-Testing/events/222835109/"
+			},
+			"group":{
+				"join_mode":"open",
+				"created":1432799617302,
+				"group_lon":-73.98999786376953,
+				"id":1556336,
+				"urlname":"Meetup-API-Testing",
+				"group_lat":40.70000076293945
+			}
+		},
+		{
+			"venue":{
+				"zip":"94109",
+				"country":"us",
+				"city":"San Francisco",
+				"phone":"(415) 776-5552",
+				"address_1":"1751 Sacramento St",
+				"name":"Old First Church",
+				"lon":-122.421934,
+				"id":689963,
+				"state":"CA",
+				"lat":37.791374,
+				"repinned":false
+			},
+			"created":1432787634000,
+			"response":"yes",
+			"guests":0,
+			"member":{
+				"member_id":184911456,
+				"name":"Vincent"
+			},
+			"rsvp_id":1553112770,
+			"mtime":1432787634000,
+			"event":{
+				"name":"Test Event Test Event Test Event Test Event",
+				"id":"222835109",
+				"time":1432825200000,
+				"event_url":"http://www.meetup.com/Meetup-API-Testing/events/222835109/"
+			},
+			"group":{
+				"join_mode":"open",
+				"created":1432799617302,
+				"group_lon":-73.98999786376953,
+				"id":1556336,
+				"urlname":"Meetup-API-Testing",
+				"group_lat":40.70000076293945
+			}
+		}
+	],
+	"meta":{
+		"next":"",
+		"method":"RSVPs v2",
+		"total_count":2,
+		"link":"https://api.meetup.com/2/rsvps",
+		"count":2,
+		"description":"Query for Event RSVPs by event",
+		"lon":"",
+		"title":"Meetup RSVPs v2",
+		"url":"https://api.meetup.com/2/rsvps?offset=0&sign=True&format=json&event_id=222835109&photo-host=public&page=20&fields=&order=event&desc=false",
+		"signed_url":"https://api.meetup.com/2/rsvps?offset=0&format=json&event_id=222835109&photo-host=public&page=20&fields=&order=event&desc=false&sig_id=187678769&sig=c0aea598f974beccdda2a6e2e9787396409665b0",
+		"id":"",
+		"updated":1432796667000,
+		"lat":""
+	}
+}
