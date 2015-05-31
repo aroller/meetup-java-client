@@ -1,0 +1,57 @@
+{
+	"birthday":{
+		"year":1972
+	},
+	"country":"ch",
+	"city":"Basel",
+	"topics":[
+		{
+			"urlkey":"softwaredev",
+			"name":"Software Development",
+			"id":3833
+		},
+		{
+			"urlkey":"technology-startups",
+			"name":"Technology Startups",
+			"id":108403
+		},
+		{
+			"urlkey":"newtech",
+			"name":"New Technology",
+			"id":9696
+		},
+		{
+			"urlkey":"productdesign",
+			"name":"Product Design",
+			"id":2993
+		},
+		{
+			"urlkey":"ios",
+			"name":"iOS",
+			"id":106382
+		}
+	],
+	"joined":1432358208000,
+	"link":"http://www.meetup.com/members/187678769",
+	"photo":{
+		"highres_link":"http://photos4.meetupstatic.com/photos/member/9/8/7/6/highres_246399030.jpeg",
+		"photo_id":246399030,
+		"photo_link":"http://photos4.meetupstatic.com/photos/member/9/8/7/6/member_246399030.jpeg",
+		"thumb_link":"http://photos4.meetupstatic.com/photos/member/9/8/7/6/thumb_246399030.jpeg"
+	},
+	"lon":7.579999923706055,
+	"other_services":{
+		
+	},
+	"name":"Aaron Roller",
+	"visited":1432642066000,
+	"self":{
+		"common":{
+			
+		}
+	},
+	"id":187678769,
+	"lang":"en_US",
+	"lat":47.56999969482422,
+	"status":"active"
+}
