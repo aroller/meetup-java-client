@@ -3,6 +3,11 @@ package com.aawhere.meetup.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Rsvp {
+
+	public enum Choice {
+		yes, no, waitlist, maybe, none;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -81,4 +81,27 @@ public class Member {
 		return (id != null) ? id : memberId;
 	}
 
+	public static class Builder {
+		private Member member;
+
+		public Builder() {
+			this.member = new Member();
+		}
+
+		public Builder id(Long id) {
+			this.member.id = id;
+			return this;
+		}
+
+		public Builder id(String id) {
+			return id(Long.parseLong(id));
+		}
+
+		public Member build() {
+			Member built = member;
+			this.member = null;
+			return built;
+		}
+	}
+
 }

@@ -16,6 +16,32 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Event {
 
+	public enum Status {
+
+		/** */
+		@SerializedName("cancelled")
+		CANCELLED,
+		/** */
+		@SerializedName("upcoming")
+		UPCOMING,
+
+		/** */
+		@SerializedName("past")
+		PAST,
+
+		/** */
+		@SerializedName("proposed")
+		PROPOSED,
+
+		/** */
+		@SerializedName("suggested")
+		SUGGESTED,
+
+		/** */
+		@SerializedName("draft")
+		DRAFT;
+	}
+
 	private Long id;
 	private String name;
 	private String description;
@@ -23,7 +49,7 @@ public class Event {
 	@SerializedName("event_url")
 	private URL eventUrl;
 
-	private String visibility;
+	private Visibility visibility;
 	@SerializedName("group_id")
 	private Long groupId;
 
@@ -44,14 +70,10 @@ public class Event {
 	private Integer rsvpLimit;
 
 	@SerializedName("photo_url")
-	private String photoUrl;
+	private URL photoUrl;
 
-	@SerializedName("feedesc")
-	private String feeDescription;
+	private Status status;
 
-	private String status;
-
-	private Boolean rsvpClosed;
 	private Date updated;
 
 	public Long getId() {
@@ -61,4 +83,61 @@ public class Event {
 	public Date getTime() {
 		return time;
 	}
+
+	public Venue getVenue() {
+		return venue;
+	}
+
+	public Visibility getVisibility() {
+		return visibility;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public URL getEventUrl() {
+		return eventUrl;
+	}
+
+	public Long getGroupId() {
+		return groupId;
+	}
+
+	public String getGroupUrlName() {
+		return groupUrlName;
+	}
+
+	public Boolean getVenueVisibility() {
+		return venueVisibility;
+	}
+
+	public Integer getRsvpCount() {
+		return rsvpCount;
+	}
+
+	public Integer getMaybeRsvpCount() {
+		return maybeRsvpCount;
+	}
+
+	public Integer getRsvpLimit() {
+		return rsvpLimit;
+	}
+
+	public URL getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
 }
