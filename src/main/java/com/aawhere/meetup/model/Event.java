@@ -3,6 +3,7 @@ package com.aawhere.meetup.model;
 import java.net.URL;
 import java.util.Date;
 
+import com.aawhere.meetup.model.Suppliers.UtcOffsetSupplier;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -14,7 +15,8 @@ import com.google.gson.annotations.SerializedName;
  * @see Events
  *
  */
-public class Event {
+public class Event
+		implements UtcOffsetSupplier {
 
 	public enum Status {
 
@@ -46,6 +48,12 @@ public class Event {
 	private String name;
 	private String description;
 	private Date time;
+	/**
+	 * This may be null when provided with another entity such as rsvp.
+	 */
+	@SerializedName("utc_offset")
+	private Integer utcOffsetMillis;
+
 	@SerializedName("event_url")
 	private URL eventUrl;
 
@@ -138,6 +146,11 @@ public class Event {
 
 	public Date getUpdated() {
 		return updated;
+	}
+
+	@Override
+	public Integer getUtcOffsetMillis() {
+		return utcOffsetMillis;
 	}
 
 }

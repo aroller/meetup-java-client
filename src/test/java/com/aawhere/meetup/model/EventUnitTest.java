@@ -22,6 +22,7 @@ public class EventUnitTest {
 		assertNotNull("venue", event.getVenue());
 		assertEquals("visibility", Visibility.PUBLIC_LIMITED, event.getVisibility());
 		assertEquals("status", Event.Status.UPCOMING, event.getStatus());
+		assertEquals("tz offset", new Integer(-14400000), event.getUtcOffsetMillis());
 	}
 
 	/**
