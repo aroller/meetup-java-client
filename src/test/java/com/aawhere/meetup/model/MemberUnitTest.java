@@ -21,5 +21,6 @@ public class MemberUnitTest {
 		assertEquals(AARON_ROLLER_MEMBER_ID, member.getId());
 		assertNotNull(member.getPhoto());
 		assertNotNull(member.getName());
+		assertNotNull(member.getLink());
 	}
 }
